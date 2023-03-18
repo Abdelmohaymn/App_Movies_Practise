@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="item"
+            type="com.example.moviespractise.model.popularmovies.Movie" />
+        <variable
+            name="listener"
+            type="com.example.moviespractise.MoviesAdapter.ItemsInteraction" />
+            />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="150dp"
+            android:layout_height="200dp"
+            app:imageUrl = "@{item.posterPath}"
+            android:onClick="@{()->listener.onClickOnItem()}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/movie_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/poster"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:text="@{item.originalTitle}" />
+
+        <TextView
+            android:id="@+id/movie_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/movie_name"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:text="@{item.voteAverage.toString()}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
